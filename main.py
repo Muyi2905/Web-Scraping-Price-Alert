@@ -35,11 +35,11 @@ def get_amazon_product_price(url):
         return None
     
     def send_email(subject, message):
-    try:
+        try:
         # Connect to Gmail's SMTP server
-        server = smtplib.SMTP('smtp.gmail.com', 587)
-        server.starttls()
-        server.login(sender_email, sender_password)
+         server = smtplib.SMTP('smtp.gmail.com', 587)
+         server.starttls()
+         server.login(sender_email, sender_password)
 
         # Compose the email
         email_message = f'Subject: {subject}\n\n{message}'
