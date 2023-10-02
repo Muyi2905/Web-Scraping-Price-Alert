@@ -52,3 +52,20 @@ def get_amazon_product_price(url):
         print('Email sent successfully.')
     except Exception as e:
         print(f'Error sending email: {str(e)}')
+
+while True:
+    current_price = get_amazon_product_price(url)
+
+    if current_price is not None:
+        if current_price <= target_price:
+            subject = 'Amazon Price Alert!'
+            message = f'The price of your tracked product has fallen to ${current_price}.\nCheck it out: {url}'
+            send_email(subject, message)
+            break  # Stop checking once the email is sent
+        else:
+            print(f'Current price: ${current_price}')
+    else:
+        print('Unable to retrieve the price.')
+
+    # Wait for some time before checking again (e.g., 1 hour)
+    time.sleep(3600)  # 3600 seconds = 1 hour
